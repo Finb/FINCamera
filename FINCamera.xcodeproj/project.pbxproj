@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06C282141ACBC7AA00AF792C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C282131ACBC7AA00AF792C /* main.m */; };
-		06C282171ACBC7AA00AF792C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C282161ACBC7AA00AF792C /* AppDelegate.m */; };
-		06C2821A1ACBC7AA00AF792C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C282191ACBC7AA00AF792C /* ViewController.m */; };
-		06C2821F1ACBC7AA00AF792C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06C2821E1ACBC7AA00AF792C /* Images.xcassets */; };
 		06C2822E1ACBC7AA00AF792C /* FINCameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C2822D1ACBC7AA00AF792C /* FINCameraTests.m */; };
+		06C2824E1ACBD4EC00AF792C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C282481ACBD4EC00AF792C /* AppDelegate.m */; };
+		06C2824F1ACBD4EC00AF792C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06C282491ACBD4EC00AF792C /* Images.xcassets */; };
+		06C282501ACBD4EC00AF792C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06C2824A1ACBD4EC00AF792C /* Info.plist */; };
+		06C282511ACBD4EC00AF792C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C2824B1ACBD4EC00AF792C /* main.m */; };
+		06C282521ACBD4EC00AF792C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C2824D1ACBD4EC00AF792C /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +27,16 @@
 
 /* Begin PBXFileReference section */
 		06C2820E1ACBC7AA00AF792C /* FINCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FINCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		06C282121ACBC7AA00AF792C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		06C282131ACBC7AA00AF792C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		06C282151ACBC7AA00AF792C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		06C282161ACBC7AA00AF792C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		06C282181ACBC7AA00AF792C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		06C282191ACBC7AA00AF792C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		06C2821E1ACBC7AA00AF792C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		06C282271ACBC7AA00AF792C /* FINCameraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FINCameraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06C2822C1ACBC7AA00AF792C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06C2822D1ACBC7AA00AF792C /* FINCameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FINCameraTests.m; sourceTree = "<group>"; };
+		06C282471ACBD4EC00AF792C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		06C282481ACBD4EC00AF792C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		06C282491ACBD4EC00AF792C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		06C2824A1ACBD4EC00AF792C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06C2824B1ACBD4EC00AF792C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		06C2824C1ACBD4EC00AF792C /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		06C2824D1ACBD4EC00AF792C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +60,7 @@
 		06C282051ACBC7AA00AF792C = {
 			isa = PBXGroup;
 			children = (
-				06C282101ACBC7AA00AF792C /* FINCamera */,
+				06C282461ACBD4EC00AF792C /* FINCameraExample */,
 				06C2822A1ACBC7AA00AF792C /* FINCameraTests */,
 				06C2820F1ACBC7AA00AF792C /* Products */,
 			);
@@ -72,29 +73,6 @@
 				06C282271ACBC7AA00AF792C /* FINCameraTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		06C282101ACBC7AA00AF792C /* FINCamera */ = {
-			isa = PBXGroup;
-			children = (
-				06C282371ACBC81200AF792C /* FINCamera */,
-				06C282151ACBC7AA00AF792C /* AppDelegate.h */,
-				06C282161ACBC7AA00AF792C /* AppDelegate.m */,
-				06C282181ACBC7AA00AF792C /* ViewController.h */,
-				06C282191ACBC7AA00AF792C /* ViewController.m */,
-				06C2821E1ACBC7AA00AF792C /* Images.xcassets */,
-				06C282111ACBC7AA00AF792C /* Supporting Files */,
-			);
-			path = FINCamera;
-			sourceTree = "<group>";
-		};
-		06C282111ACBC7AA00AF792C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				06C282121ACBC7AA00AF792C /* Info.plist */,
-				06C282131ACBC7AA00AF792C /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		06C2822A1ACBC7AA00AF792C /* FINCameraTests */ = {
@@ -114,11 +92,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		06C282371ACBC81200AF792C /* FINCamera */ = {
+		06C282461ACBD4EC00AF792C /* FINCameraExample */ = {
 			isa = PBXGroup;
 			children = (
+				06C282531ACBD51300AF792C /* Supporting files */,
+				06C282471ACBD4EC00AF792C /* AppDelegate.h */,
+				06C282481ACBD4EC00AF792C /* AppDelegate.m */,
+				06C2824C1ACBD4EC00AF792C /* ViewController.h */,
+				06C2824D1ACBD4EC00AF792C /* ViewController.m */,
+				06C282491ACBD4EC00AF792C /* Images.xcassets */,
 			);
-			path = FINCamera;
+			path = FINCameraExample;
+			sourceTree = "<group>";
+		};
+		06C282531ACBD51300AF792C /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				06C2824A1ACBD4EC00AF792C /* Info.plist */,
+				06C2824B1ACBD4EC00AF792C /* main.m */,
+			);
+			name = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,7 +194,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06C2821F1ACBC7AA00AF792C /* Images.xcassets in Resources */,
+				06C282501ACBD4EC00AF792C /* Info.plist in Resources */,
+				06C2824F1ACBD4EC00AF792C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,9 +213,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06C2821A1ACBC7AA00AF792C /* ViewController.m in Sources */,
-				06C282171ACBC7AA00AF792C /* AppDelegate.m in Sources */,
-				06C282141ACBC7AA00AF792C /* main.m in Sources */,
+				06C282521ACBD4EC00AF792C /* ViewController.m in Sources */,
+				06C282511ACBD4EC00AF792C /* main.m in Sources */,
+				06C2824E1ACBD4EC00AF792C /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,7 +318,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = FINCamera/Info.plist;
+				INFOPLIST_FILE = FINCameraExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -335,7 +329,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = FINCamera/Info.plist;
+				INFOPLIST_FILE = FINCameraExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -395,6 +389,7 @@
 				06C282331ACBC7AA00AF792C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		06C282341ACBC7AA00AF792C /* Build configuration list for PBXNativeTarget "FINCameraTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +398,7 @@
 				06C282361ACBC7AA00AF792C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
