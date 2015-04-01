@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "FINCamera.h"
 
 @interface ViewController ()
 
