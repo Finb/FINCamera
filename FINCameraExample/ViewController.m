@@ -19,6 +19,15 @@
     [super viewDidLoad];
     self.navigationController.navigationBarHidden=YES;
     self.view.backgroundColor=[UIColor whiteColor];
+    
+    FINCamera * camera =[FINCamera createWithBuilder:^(FINCamera *builder) {
+        [builder useBackCamera];
+        [builder useVideoDataOutput];
+        [builder setPreset:AVCaptureSessionPresetPhoto];
+    }];
+    [camera startSession];
+    [self.view addSubview:[camera previewWithFrame:self.view.frame]];
+    
 }
 
 - (void)didReceiveMemoryWarning {

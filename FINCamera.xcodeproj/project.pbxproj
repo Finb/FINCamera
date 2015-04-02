@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06C2822E1ACBC7AA00AF792C /* FINCameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C2822D1ACBC7AA00AF792C /* FINCameraTests.m */; };
 		06C2824E1ACBD4EC00AF792C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C282481ACBD4EC00AF792C /* AppDelegate.m */; };
 		06C2824F1ACBD4EC00AF792C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06C282491ACBD4EC00AF792C /* Images.xcassets */; };
 		06C282501ACBD4EC00AF792C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06C2824A1ACBD4EC00AF792C /* Info.plist */; };
 		06C282511ACBD4EC00AF792C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C2824B1ACBD4EC00AF792C /* main.m */; };
 		06C282521ACBD4EC00AF792C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C2824D1ACBD4EC00AF792C /* ViewController.m */; };
 		06C2825B1ACBD6FF00AF792C /* FINCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C2825A1ACBD6FF00AF792C /* FINCamera.m */; };
+		06C2825D1ACBE31200AF792C /* FINCameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C2825C1ACBE31200AF792C /* FINCameraTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +30,6 @@
 		06C2820E1ACBC7AA00AF792C /* FINCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FINCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06C282271ACBC7AA00AF792C /* FINCameraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FINCameraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06C2822C1ACBC7AA00AF792C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		06C2822D1ACBC7AA00AF792C /* FINCameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FINCameraTests.m; sourceTree = "<group>"; };
 		06C282471ACBD4EC00AF792C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		06C282481ACBD4EC00AF792C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		06C282491ACBD4EC00AF792C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -40,6 +39,7 @@
 		06C2824D1ACBD4EC00AF792C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		06C282591ACBD6FF00AF792C /* FINCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FINCamera.h; sourceTree = "<group>"; };
 		06C2825A1ACBD6FF00AF792C /* FINCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FINCamera.m; sourceTree = "<group>"; };
+		06C2825C1ACBE31200AF792C /* FINCameraTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FINCameraTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +82,8 @@
 		06C2822A1ACBC7AA00AF792C /* FINCameraTests */ = {
 			isa = PBXGroup;
 			children = (
-				06C2822D1ACBC7AA00AF792C /* FINCameraTests.m */,
 				06C2822B1ACBC7AA00AF792C /* Supporting Files */,
+				06C2825C1ACBE31200AF792C /* FINCameraTests.m */,
 			);
 			path = FINCameraTests;
 			sourceTree = "<group>";
@@ -237,7 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06C2822E1ACBC7AA00AF792C /* FINCameraTests.m in Sources */,
+				06C2825D1ACBE31200AF792C /* FINCameraTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
