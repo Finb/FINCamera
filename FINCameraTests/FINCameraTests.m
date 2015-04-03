@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "FINCamera.h"
-@interface FINCameraTests : XCTestCase
+@interface FINCameraTests :  XCTestCase
 
 @end
 

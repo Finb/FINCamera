@@ -34,13 +34,23 @@
 -(void)useBackCamera;
 -(void)useFrontCamera;
 -(void)toggleCamera;
+-(AVCaptureDevice *)currentDevice;
 
 #pragma mark output
--(void)useMetaDataOutput NS_AVAILABLE_IOS(7_0);
--(void)useVideoDataOutput;
+-(void)useMetaDataOutputWithDelegate:(id<AVCaptureMetadataOutputObjectsDelegate>)delegate NS_AVAILABLE_IOS(7_0);
+-(void)useVideoDataOutputWithDelegate:(id<AVCaptureVideoDataOutputSampleBufferDelegate>)delegate;
 
 #pragma mark preset
 -(void)setPreset:(NSString *)preset;
+
+#pragma mark focus
+-(BOOL)pointFocusAvailable;
+-(void)focusAtPoint:(CGPoint)touchPoint;
+
+#pragma mark Torch
+- (BOOL) supportsTorchMode;
+- (BOOL) isTorchModeOn;
+- (void) toggleTorchMode;
 
 -(UIView *)previewWithFrame:(CGRect)frame;
 
