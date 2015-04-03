@@ -33,13 +33,11 @@
     [self.view addSubview:[camera previewWithFrame:self.view.frame]];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        while (YES) {
-            sleep(3);
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                [camera toggleCamera];
-                [camera toggleTorchMode];
-            });
-        }
+        sleep(3);
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [camera toggleCamera];
+            [camera toggleTorchMode];
+        });
     });
     
 }
