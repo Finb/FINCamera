@@ -10,7 +10,7 @@
 #import "FINCamera.h"
 
 @interface ViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate>
-
+@property(nonatomic,strong)FINCamera * camera;
 @end
 
 @implementation ViewController
@@ -21,27 +21,22 @@
     self.view.backgroundColor=[UIColor whiteColor];
     
     __weak typeof(self) weakSelf = self;
-    FINCamera * camera =[FINCamera createWithBuilder:^(FINCamera *builder) {
+        self.camera =[FINCamera createWithBuilder:^(FINCamera *builder) {
         // input
-        [builder useFrontCamera];
+        [builder useBackCamera];
         // output
-        [builder useVideoDataOutputWithDelegate:weakSelf];
+//        [builder useVideoDataOutputWithDelegate:weakSelf];
         // setting
         [builder setPreset:AVCaptureSessionPresetPhoto];
     }];
-    [camera startSession];
-    [self.view addSubview:[camera previewWithFrame:self.view.frame]];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        sleep(3);
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            [camera toggleCamera];
-            [camera toggleTorchMode];
-        });
-    });
-    
+    [self.camera startSession];
+    [self.view addSubview:[self.camera previewWithFrame:self.view.frame]];
+    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)]];
 }
-
+-(void)tapClick:(UIGestureRecognizer *)sender{
+    CGPoint touchPoint = [sender locationInView:self.view];
+    [self.camera focusAtPoint:touchPoint];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

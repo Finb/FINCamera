@@ -187,13 +187,20 @@
 -(void)focusAtPoint:(CGPoint)touchPoint{
     CGPoint pointOfInterest =[_perviewLayer captureDevicePointOfInterestForPoint:touchPoint];
     AVCaptureDevice * device =[self currentDevice];
-    if([device lockForConfiguration:nil]){
-        device.focusMode = AVCaptureFocusModeAutoFocus;
-        device.exposureMode = AVCaptureExposureModeAutoExpose;
-        device.focusPointOfInterest=pointOfInterest;
-        device.exposurePointOfInterest=pointOfInterest;
+    if (device.isFocusPointOfInterestSupported && [device isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
+        NSError *error;
+        if ([device lockForConfiguration:&error]) {
+            device.focusPointOfInterest = pointOfInterest;
+            device.focusMode = AVCaptureFocusModeContinuousAutoFocus;
+            
+            if(device.isExposurePointOfInterestSupported && [device isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure]){
+                device.exposurePointOfInterest=pointOfInterest;
+                device.exposureMode=AVCaptureExposureModeContinuousAutoExposure;
+            }
+            
+            [device unlockForConfiguration];
+        }
     }
-    [device unlockForConfiguration];
 }
 
 -(UIView *)previewWithFrame:(CGRect)frame{

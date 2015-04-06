@@ -55,6 +55,6 @@
 -(UIView *)previewWithFrame:(CGRect)frame;
 
 -(void)startSession;
--(void)stopSession;
+-(void)endSession;
 
 @end
