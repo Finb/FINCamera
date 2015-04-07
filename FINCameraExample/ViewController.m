@@ -13,7 +13,9 @@
 @property(nonatomic,strong)FINCamera * camera;
 @end
 
-@implementation ViewController
+@implementation ViewController{
+    CGFloat videoZoomFactor;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +34,16 @@
     [self.camera startSession];
     [self.view addSubview:[self.camera previewWithFrame:self.view.frame]];
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)]];
+    
+    UIPanGestureRecognizer * recognizer =[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePanFrom:)];
+    [self.view addGestureRecognizer:recognizer];
+}
+-(void)handlePanFrom:(UIPanGestureRecognizer *)recognizer{
+    CGPoint point = [recognizer translationInView:recognizer.view];
+    videoZoomFactor -= point.y/self.view.frame.size.height/3;
+    if(videoZoomFactor<0)
+        videoZoomFactor=0;
+    [self.camera setVideoZoomFactor:1+ videoZoomFactor];
 }
 -(void)tapClick:(UIGestureRecognizer *)sender{
     CGPoint touchPoint = [sender locationInView:self.view];

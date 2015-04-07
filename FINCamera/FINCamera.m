@@ -202,7 +202,21 @@
         }
     }
 }
-
+-(void)setVideoZoomFactor:(CGFloat)videoZoomFactor{
+    if(videoZoomFactor<1){
+        NSAssert(NO, @"Must be greater than zero");
+    }
+    AVCaptureDevice * device =[self currentDevice];
+    NSError *error;
+    if ([device lockForConfiguration:&error]) {
+        [device setVideoZoomFactor:videoZoomFactor];
+        [device unlockForConfiguration];
+    }
+}
+-(CGFloat)getVideoZoomFactor{
+    AVCaptureDevice * device =[self currentDevice];
+    return device.videoZoomFactor;
+}
 -(UIView *)previewWithFrame:(CGRect)frame{
     if(!_Preview){
         AVCaptureVideoPreviewLayer * perviewLayer=[AVCaptureVideoPreviewLayer layerWithSession:self.CaptureSession];

@@ -52,6 +52,9 @@
 - (BOOL) isTorchModeOn;
 - (void) toggleTorchMode;
 
+-(void)setVideoZoomFactor:(CGFloat)videoZoomFactor NS_AVAILABLE_IOS(7_0);
+-(CGFloat)getVideoZoomFactor NS_AVAILABLE_IOS(7_0);
+
 -(UIView *)previewWithFrame:(CGRect)frame;
 
 -(void)startSession;
