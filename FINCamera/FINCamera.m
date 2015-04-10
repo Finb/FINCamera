@@ -10,6 +10,7 @@
 
 @implementation FINCamera{
     AVCaptureVideoPreviewLayer * _perviewLayer;
+    AVCaptureDevice *_BackCameraDevice , *_FrontCameraDevice;
 }
 
 
@@ -46,16 +47,23 @@
 
 
 -(AVCaptureDevice *)BackCameraDevice{
+    if(_BackCameraDevice) return _BackCameraDevice;
     for (AVCaptureDevice * device in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo]) {
-        if(device.position == AVCaptureDevicePositionBack)
-            return device;
+        if(device.position == AVCaptureDevicePositionBack){
+            _BackCameraDevice=device;
+            [_BackCameraDevice addObserver:self forKeyPath:@"adjustingFocus" options:NSKeyValueObservingOptionNew context:nil];
+            return _BackCameraDevice;
+        }
     }
     return [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
 }
 -(AVCaptureDevice *)FrontCameraDevice{
     for (AVCaptureDevice * device in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo]) {
-        if(device.position == AVCaptureDevicePositionFront)
-            return device;
+        if(device.position == AVCaptureDevicePositionFront){
+            _FrontCameraDevice=device;
+            [_FrontCameraDevice addObserver:self forKeyPath:@"adjustingFocus" options:NSKeyValueObservingOptionNew context:nil];
+            return _FrontCameraDevice;
+        }
     }
     return [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
 }
@@ -69,12 +77,37 @@
     }
     return self;
 }
+-(void)dealloc{
+     [_BackCameraDevice removeObserver:self forKeyPath:@"adjustingFocus"];
+     [_FrontCameraDevice removeObserver:self forKeyPath:@"adjustingFocus"];
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if( [keyPath isEqualToString:@"adjustingFocus"] ){
+        BOOL adjustingFocus = [ [change objectForKey:NSKeyValueChangeNewKey] isEqualToNumber:[NSNumber numberWithInt:1] ];
+        if(_delegate){
+            [_delegate camera:self adjustingFocus:adjustingFocus];
+        }
+    }
+}
+- (void)areWeFocused:(NSNotification *) notification {
+    BOOL adjusting = [[self currentDevice] isAdjustingFocus];
+    if (!adjusting) {
+        NSLog(@"I have focus");
+    } else {
+        NSLog(@"NOT");
+    }
+}
 +(id)createWithBuilder:(void (^)(FINCamera *))block{
     FINCamera * camera  =[[FINCamera alloc]init];
     if(camera){
         if(block){
             block(camera);
         }
+        //default setting
+        if(![camera currentDevice]){
+            [camera useBackCamera];
+        }
+        
     }
     return camera;
 }
@@ -111,7 +144,7 @@
 }
 -(AVCaptureDevice *)currentDevice{
     return self.UsingBackCamera?self.BackCameraDevice:
-    (self.UsingFrontCamera?self.FrontCameraDevice:nil);
+           (self.UsingFrontCamera?self.FrontCameraDevice:nil);
 }
 
 -(void)removeOutputs{

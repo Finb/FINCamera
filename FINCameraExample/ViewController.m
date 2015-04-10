@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "FINCamera.h"
 
-@interface ViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface ViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,FINCameraDelagate>
 @property(nonatomic,strong)FINCamera * camera;
 @end
 
@@ -27,7 +27,9 @@
         // input
         [builder useBackCamera];
         // output
-//        [builder useVideoDataOutputWithDelegate:weakSelf];
+        [builder useVideoDataOutputWithDelegate:weakSelf];
+        // delegate
+        [builder setDelegate:weakSelf];
         // setting
         [builder setPreset:AVCaptureSessionPresetPhoto];
     }];
@@ -55,5 +57,8 @@
 }
 -(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
     NSLog(@"TEST");
+}
+-(void)camera:(FINCamera *)camera adjustingFocus:(BOOL)adjustingFocus{
+    NSLog(@"%@",adjustingFocus?@"正在对焦":@"对焦完毕");
 }
 @end

@@ -14,6 +14,14 @@
 #import <CoreMedia/CoreMedia.h>
 #import<QuartzCore/QuartzCore.h>
 
+
+@class FINCamera ;
+@protocol FINCameraDelagate <NSObject>
+@optional
+- (void)camera:(FINCamera *)camera adjustingFocus:(BOOL)adjustingFocus;
+@end
+
+
 @interface FINCamera : NSObject
 @property (nonatomic,strong, readonly) AVCaptureSession * CaptureSession;
 
@@ -23,10 +31,12 @@
 @property(nonatomic,assign,readonly)BOOL UsingBackCamera;
 @property(nonatomic,assign,readonly)BOOL UsingFrontCamera;
 
-@property(nonatomic,strong,readonly)AVCaptureDevice * BackCameraDevice;
-@property(nonatomic,strong,readonly)AVCaptureDevice * FrontCameraDevice;
+@property(nonatomic,readonly)AVCaptureDevice * BackCameraDevice;
+@property(nonatomic,readonly)AVCaptureDevice * FrontCameraDevice;
 
 @property(nonatomic,strong,readonly)UIView * Preview;
+
+@property(nonatomic,weak)id<FINCameraDelagate> delegate;
 
 +(id)createWithBuilder:(void (^)(FINCamera * builder))block;
 
@@ -61,3 +71,5 @@
 -(void)endSession;
 
 @end
+
+
