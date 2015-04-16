@@ -22,8 +22,9 @@
     self.navigationController.navigationBarHidden=YES;
     self.view.backgroundColor=[UIColor whiteColor];
     
+    //Example
     __weak typeof(self) weakSelf = self;
-        self.camera =[FINCamera createWithBuilder:^(FINCamera *builder) {
+    self.camera =[FINCamera createWithBuilder:^(FINCamera *builder) {
         // input
         [builder useBackCamera];
         // output
@@ -35,6 +36,7 @@
     }];
     [self.camera startSession];
     [self.view addSubview:[self.camera previewWithFrame:self.view.frame]];
+    
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)]];
     
     UIPanGestureRecognizer * recognizer =[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePanFrom:)];

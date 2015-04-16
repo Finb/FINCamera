@@ -89,14 +89,6 @@
         }
     }
 }
-- (void)areWeFocused:(NSNotification *) notification {
-    BOOL adjusting = [[self currentDevice] isAdjustingFocus];
-    if (!adjusting) {
-        NSLog(@"I have focus");
-    } else {
-        NSLog(@"NOT");
-    }
-}
 +(id)createWithBuilder:(void (^)(FINCamera *))block{
     FINCamera * camera  =[[FINCamera alloc]init];
     if(camera){
