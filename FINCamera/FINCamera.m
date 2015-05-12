@@ -209,6 +209,30 @@
         NSAssert(NO, @"device can't toggle Torch Mode");
     }
 }
+
+- (BOOL)supportsFlashMode{
+    AVCaptureDevice * device =[self currentDevice];
+    if(device && [device hasFlash] && [device isFlashModeSupported:AVCaptureFlashModeOn]){
+        return YES;
+    }
+    return NO;
+}
+- (void) SwitchFlashMode:(AVCaptureFlashMode)flashModel{
+    if([self supportsTorchMode]){
+        AVCaptureDevice * device =[self currentDevice];
+        if(![device isFlashModeSupported:flashModel]){
+            NSAssert(NO, @"device dose not support this flashModel");
+        }
+        if([device lockForConfiguration:nil]){
+            device.flashMode=flashModel;
+        }
+        [device unlockForConfiguration];
+    }
+    else{
+        NSAssert(NO, @"device can't toggle Torch Mode");
+    }
+}
+
 -(void)focusAtPoint:(CGPoint)touchPoint{
     CGPoint pointOfInterest =[_perviewLayer captureDevicePointOfInterestForPoint:touchPoint];
     AVCaptureDevice * device =[self currentDevice];

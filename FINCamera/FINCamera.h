@@ -62,6 +62,10 @@
 - (BOOL) isTorchModeOn;
 - (void) toggleTorchMode;
 
+#pragma mark flash
+- (BOOL) supportsFlashMode;
+- (void) SwitchFlashMode:(AVCaptureFlashMode)flashModel;
+
 -(void)setVideoZoomFactor:(CGFloat)videoZoomFactor NS_AVAILABLE_IOS(7_0);
 -(CGFloat)getVideoZoomFactor NS_AVAILABLE_IOS(7_0);
 
