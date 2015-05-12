@@ -49,6 +49,9 @@
 #pragma mark output
 -(void)useMetaDataOutputWithDelegate:(id<AVCaptureMetadataOutputObjectsDelegate>)delegate NS_AVAILABLE_IOS(7_0);
 -(void)useVideoDataOutputWithDelegate:(id<AVCaptureVideoDataOutputSampleBufferDelegate>)delegate;
+-(void)useStillImageOutput;
+
+- (void)captureStillImageWithCompletionHandler:(void (^)(UIImage * image)) block;
 
 #pragma mark preset
 -(void)setPreset:(NSString *)preset;

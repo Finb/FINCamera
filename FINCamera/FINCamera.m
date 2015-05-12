@@ -7,7 +7,9 @@
 //
 
 #import "FINCamera.h"
-
+@interface FINCamera()
+@property(nonatomic,assign)BOOL isCapturingImage;
+@end
 @implementation FINCamera{
     AVCaptureVideoPreviewLayer * _perviewLayer;
     AVCaptureDevice *_BackCameraDevice , *_FrontCameraDevice;
@@ -168,6 +170,66 @@
     [self.CaptureSession addOutput:output];
     
     [self.CaptureSession commitConfiguration];
+}
+-(void)useStillImageOutput{
+    [self.CaptureSession beginConfiguration];
+    
+    [self removeOutputs];
+    
+    AVCaptureStillImageOutput * stillImageOutput = [[AVCaptureStillImageOutput alloc]init];
+    NSDictionary * outputSettings = [[NSDictionary alloc] initWithObjectsAndKeys: AVVideoCodecJPEG, AVVideoCodecKey, nil];
+    [stillImageOutput setOutputSettings:outputSettings];
+    [self.CaptureSession addOutput:stillImageOutput];
+    
+    [self.CaptureSession commitConfiguration];
+}
+- (void)captureStillImageWithCompletionHandler:(void (^)(UIImage *))block{
+    if(self.isCapturingImage){
+        return;
+    }
+    self.isCapturingImage =YES;
+    AVCaptureStillImageOutput * stillImageOutput=nil;
+    for (AVCaptureOutput * output in self.CaptureSession.outputs) {
+        if([output isMemberOfClass:[AVCaptureStillImageOutput class]]){
+            stillImageOutput=(AVCaptureStillImageOutput *)output;
+            break;
+        }
+    }
+    
+    if(!stillImageOutput){
+        NSAssert(NO, @"stillImageOutput is nil");
+        return;
+    }
+    
+    AVCaptureConnection *videoConnection = nil;
+    for (AVCaptureConnection *connection in stillImageOutput.connections){
+        for (AVCaptureInputPort *port in [connection inputPorts]){
+            if ([[port mediaType] isEqual:AVMediaTypeVideo] ){
+                videoConnection = connection;
+                break;
+            }
+        }
+        if (videoConnection) {
+            break;
+        }
+    }
+    
+    [stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler: ^(CMSampleBufferRef imageSampleBuffer, NSError *error) {
+        
+        self.isCapturingImage=NO;
+        
+        if (imageSampleBuffer != NULL) {
+            
+            NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
+            UIImage *capturedImage = [[UIImage alloc]initWithData:imageData scale:1];
+            imageData = nil;
+            
+            if(block){
+                block(capturedImage);
+            }
+        }
+    }];
+    
 }
 -(void)setPreset:(NSString *)preset{
     if([self.CaptureSession canSetSessionPreset:preset])
